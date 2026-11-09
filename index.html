@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プレミアムガチャ</title>
+
+  <!-- CSSを読み込む -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="game-container">
+
+    <!-- ヘッダー -->
+    <header class="game-header">
+      <p class="game-logo">GACHA WORLD</p>
+      <div class="game-coin">✦ 1,200</div>
+    </header>
+
+    <!-- タイトル -->
+    <section class="game-title">
+      <h1>プレミアムガチャ</h1>
+      <p>運命のレアリティを引き当てろ！</p>
+    </section>
+
+    <!-- ガチャ結果 -->
+    <section class="gacha-card">
+      <p class="rarity-label">✦ LEGENDARY ✦</p>
+      <div class="gacha-image-area">
+      <img
+        class="gacha-image"
+        src="images/SSR.jpg"
+        alt="ガチャで獲得したアイテム"
+        >
+        </div>
+      
+      <p class="gacha-result">ガチャを引いてね！</p>
+
+      
+
+
+    </section>
+
+    <!-- 排出確率 -->
+    <section class="gacha-rates">
+      <h2>排出確率</h2>
+      <p>SSR：1%</p>
+      <p>SR：9%</p>
+      <p>R：20%</p>
+      <p>NR：70%</p>
+    </section>
+
+    <!-- ガチャボタン -->
+    <button class="gacha-button">
+      ✦ ガチャを引く ✦
+    </button>
+
+  </main>
+
+  <!-- ガチャ確認モーダル -->
+<div class="modal-overlay">
+
+  <div class="modal-content">
+
+    <h2>ガチャを引きますか？</h2>
+
+    <p>ジェルを100個消費します</p>
+
+    <div class="modal-buttons">
+      <button class="modal-cancel">キャンセル</button>
+      <button class="modal-confirm">ガチャを引く</button>
+    </div>
+
+  </div>
+
+</div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- JavaScript -->
+  <script src="main.js"></script>
+
+</body>
+</html>

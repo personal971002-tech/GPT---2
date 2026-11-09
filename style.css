@@ -1,0 +1,466 @@
+
+/* =====================================
+   1. 全体の基本設定
+===================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 16px;
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #ffffff;
+
+  background:
+    radial-gradient(circle at top, #35306b, transparent 55%),
+    #0b1020;
+}
+
+/* =====================================
+   2. ゲーム全体のコンテナ
+===================================== */
+
+.game-container {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 20px 16px;
+
+  background: linear-gradient(
+    155deg,
+    #20204b,
+    #11152b 65%,
+    #1d1743
+  );
+
+  border: 1px solid #55519a;
+  border-radius: 24px;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* =====================================
+   3. ヘッダー
+===================================== */
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.game-logo {
+  color: #c7c4f6;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.game-coin {
+  padding: 7px 14px;
+
+  color: #f9d575;
+  font-size: 13px;
+  font-weight: bold;
+
+  background: #312e60;
+  border-radius: 30px;
+}
+
+/* =====================================
+   4. タイトル
+===================================== */
+
+.game-title {
+  margin: 22px 0 18px;
+  text-align: center;
+}
+
+.title-label {
+  margin: 0 0 8px;
+  color: #b9a0ff;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.game-title h1 {
+  margin: 0;
+
+  color: #ffffff;
+  font-size: clamp(24px, 7vw, 32px);
+  font-weight: 900;
+
+  text-shadow: 0 0 20px rgba(165, 130, 255, 0.5);
+}
+
+.title-description {
+  margin: 10px 0 0;
+  color: #b9b5df;
+  font-size: 13px;
+}
+
+/* =====================================
+   5. ガチャ結果カード
+===================================== */
+
+.gacha-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  padding: 18px 14px;
+
+  text-align: center;
+
+  background: radial-gradient(
+    ellipse at center,
+    #49377f,
+    #282354 65%,
+    #181733
+  );
+
+  border: 1px solid #6555a4;
+  border-radius: 20px;
+
+  box-shadow:
+    inset 0 0 30px rgba(151, 108, 255, 0.15),
+    0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.rarity-label {
+  margin: 0 0 12px;
+
+  color: #ffe69d;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* =====================================
+   6. ガチャ画像
+===================================== */
+
+.gacha-image-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;   
+  height: 210px;
+  overflow: hidden;
+}
+
+.gacha-image {
+  display: block;
+  max-width: 100%;
+  max-height: 190px;
+  object-fit: contain;
+
+  filter: drop-shadow(
+    0 0 25px rgba(255, 210, 100, 0.5)
+  );
+
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* =====================================
+   7. ガチャ結果テキスト
+===================================== */
+
+.gacha-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 55px;
+  margin-top: 10px;
+
+  color: #ffe18b;
+  font-size: 26px;
+  font-weight: 900;
+
+  text-shadow:
+    0 0 15px rgba(255, 210, 80, 0.6);
+}
+
+/* =====================================
+   8. 排出確率
+===================================== */
+
+.gacha-rates {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 18px 0;
+  padding: 14px 18px;
+
+  background: #292747;
+  border: 1px solid #403b72;
+  border-radius: 14px;
+}
+
+.gacha-rates h2 {
+  margin: 0 0 12px;
+
+  color: #d8d1ff;
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.rate-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 6px 0;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.rate-row:last-child {
+  border-bottom: none;
+}
+
+.rate-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.rate-percent {
+  color: #dedbf1;
+  font-size: 14px;
+}
+
+/* レアリティ別の色 */
+
+.ssr {
+  color: #ffdb75;
+}
+
+.sr {
+  color: #d8a6ff;
+}
+
+.r {
+  color: #80caff;
+}
+
+.nr {
+  color: #c2c2d2;
+}
+
+/* =====================================
+   9. ガチャボタン
+===================================== */
+
+.gacha-button {
+  display: block;
+
+  width: 100%;
+  min-height: 60px;
+  padding: 15px 20px;
+
+  color: #50310d;
+  font-size: 19px;
+  font-weight: 900;
+
+  background: linear-gradient(
+    180deg,
+    #ffe28a,
+    #f2a62d
+  );
+
+  border: none;
+  border-radius: 16px;
+
+  cursor: pointer;
+  touch-action: manipulation;
+
+  box-shadow:
+    0 6px 0 #a66a1c,
+    0 12px 25px rgba(255, 177, 50, 0.25);
+
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+
+/* マウスを乗せたとき */
+.gacha-button:hover {
+  filter: brightness(1.08);
+}
+
+/* ボタンを押したとき */
+.gacha-button:active {
+  transform: translateY(5px);
+
+  box-shadow:
+    0 1px 0 #a66a1c,
+    0 4px 12px rgba(255, 177, 50, 0.2);
+}
+
+/* キーボード操作時 */
+.gacha-button:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 4px;
+}
+
+/* =====================================
+   10. フッター
+===================================== */
+
+.game-footer {
+  margin: 22px 0 0;
+
+  color: #777399;
+  font-size: 10px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+/* =====================================
+   11. スマホ対応
+===================================== */
+
+@media (max-width: 480px) {
+
+  body {
+    padding: 0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .game-container {
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 16px 14px 24px;
+
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .game-title {
+    margin: 18px 0 16px;
+  }
+
+  .gacha-image-area {
+    height: 180px;
+  }
+
+  .gacha-image {
+    max-height: 165px;
+  }
+
+  .gacha-result {
+    font-size: 24px;
+  }
+
+  .gacha-button {
+    font-size: 18px;
+  }
+}
+
+/* 動きを減らす設定への対応 */
+@media (prefers-reduced-motion: reduce) {
+  .gacha-image {
+    animation: none;
+  }
+
+  .gacha-button {
+    transition: none;
+  }
+}
+/* 画面全体を覆う背景 */
+.modal-overlay {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  background: rgba(0, 0, 0, 0.75);
+
+  justify-content: center;
+  align-items: center;
+}
+
+/* ポップアップ本体 */
+.modal-content {
+  width: 90%;
+  max-width: 340px;
+  padding: 30px 20px;
+
+  text-align: center;
+
+  background: linear-gradient(145deg, #35306b, #181733);
+
+  border: 1px solid #8d73d6;
+  border-radius: 20px;
+
+  box-shadow: 0 0 40px rgba(150, 100, 255, 0.3);
+}
+
+/* タイトル */
+.modal-content h2 {
+  color: #ffe28a;
+  font-size: 22px;
+}
+
+/* 説明文 */
+.modal-content p {
+  color: #d8d1ff;
+  font-size: 15px;
+}
+
+/* ボタンを横並びにする */
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+/* 2つのボタン共通 */
+.modal-buttons button {
+  flex: 1;
+  padding: 12px 8px;
+
+  border: none;
+  border-radius: 10px;
+
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* キャンセル */
+.modal-cancel {
+  background: #55516f;
+  color: white;
+}
+
+/* ガチャ実行 */
+.modal-confirm {
+  background: linear-gradient(#ffe28a, #f2a62d);
+  color: #50310d;
+}
